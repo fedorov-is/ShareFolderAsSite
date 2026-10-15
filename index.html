@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Просмотр общей папки</title>
+  <script>
+    try {
+      if (localStorage.getItem('theme') === 'dark') document.documentElement.dataset.theme = 'dark';
+    } catch { /* storage unavailable */ }
+  </script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header id="topbar" class="topbar" hidden>
+    <div class="topbar-inner">
+      <h1 id="title" hidden></h1>
+      <button type="button" id="copy-link" class="secondary" hidden>Скопировать ссылку</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="create" hidden>
+      <h2>Открыть общую папку</h2>
+      <form id="source-form" class="source-form">
+        <input id="source-url" type="url" required
+               placeholder="Вставьте ссылку на папку, например https://disk.yandex.ru/d/abc123">
+        <button type="submit">Открыть</button>
+      </form>
+      <p id="supported" class="hint"></p>
+    </section>
+
+    <p id="status" class="status" hidden></p>
+    <nav id="tabs" class="tabs" role="tablist"></nav>
+    <section id="panel" class="panel" role="tabpanel"></section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div id="footer-links" hidden>
+        <a id="reset-link" href="./">Открыть другую папку</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <button type="button" id="clear-cache" class="link-button">Очистить кэш</button>
+      </div>
+      <label class="theme-switch">
+        <span>Тёмная тема</span>
+        <input type="checkbox" id="theme-toggle" role="switch">
+        <span class="slider" aria-hidden="true"></span>
+      </label>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
